@@ -23,6 +23,8 @@ Finally, build with: `jpm build` and launch the program with `./build/lorenz`
 * `D` changes between the particle display modes (points, lines, cubes, etc.)
   * Holding `C` does the same, but quickly
 * `M` toggles the mouse cursor
+* `P` changes the color palette
+* `O` cycles fast through the color palettes
 
 # Other interesting chaotic maps
 
