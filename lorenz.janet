@@ -1,11 +1,19 @@
 (use jaylib)
 
-### Lorenz Attractor
+### Lorenz Attractor parameters
 
 (def sigma 10.0)
 (def rho 28.0)
 (def beta (/ 8.0 3.0))
 (var dt 0.005)
+
+(defn next-lorenz [[x y z color]]
+  @[(+ x (* dt (* sigma (- y x))))
+    (+ y (* dt (- (* x (- rho z)) y)))
+    (+ z (* dt (- (* x y) (* beta z))))
+    color])
+
+### Graphics
 
 (def initial-range 60.0)
 
@@ -36,15 +44,9 @@
         b (math/floor (+ w (* (math/random) 255 bm)))]
     [r g b]))
 
-(defn next-lorenz [[x y z color]]
-  @[(+ x (* dt (* sigma (- y x))))
-    (+ y (* dt (- (* x (- rho z)) y)))
-    (+ z (* dt (- (* x y) (* beta z))))
-    color])
 
-### Initialize the Lorenz attractor
+### Simulation setup
 
-# Initialize the points array
 (def num-points 40_000)
 (def points (array/new num-points))
 (def height 800)
@@ -65,7 +67,7 @@
 
 (defn handle-keyboard []
     (if (key-pressed? :r) (init-points)) # Randomize points with the 'R' key
-    (if (key-pressed? :f) (set show-fps (not show-fps))) # Toggle FPS display with the 'F' key
+    (if (key-pressed? :space) (set show-fps (not show-fps))) # Toggle FPS display with the 'Space' bar
     (if (key-pressed? :d) (set drawing-mode (mod (+ drawing-mode 1) 5))) # Cycle through drawing modes pressing the 'D' key
     (if (key-down? :c) (set drawing-mode (mod (+ drawing-mode 1) 5))) # Fast-cycle through drawing modes holding the 'C' key
     (if (key-pressed? :m) (set cursor-enabled? (not cursor-enabled?))) # Toggle the mouse cursor with the 'M' key
@@ -73,6 +75,7 @@
     (if (key-down? :2) (set dt (* 1.02 dt))) # Speed up the simulation with the '2' key
     (if (key-pressed? :p) (update-colors)) # Cycle through palettes with the 'P' key
     (if (key-down? :o) (update-colors)) # Cycle through palettes with the 'P' key
+    (if (key-pressed? :f) (toggle-fullscreen)) # Toggle fullscreen with the 'F' key
   )
 
 ### Main loop

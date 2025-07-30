@@ -19,12 +19,13 @@ Finally, build with: `jpm build` and launch the program with `./build/lorenz`
 * `ESC` closes the application
 * `1` and `2` slow down/speed up the animation
 * `R` to randomize (reset) the particles to a random location
-* `F` toggles the FPS display
+* `Space` toggles the FPS display
 * `D` changes between the particle display modes (points, lines, cubes, etc.)
   * Holding `C` does the same, but quickly
 * `M` toggles the mouse cursor
 * `P` changes the color palette
 * `O` cycles fast through the color palettes
+* `F` toggles windowed mode or full-screen
 
 # Other interesting chaotic maps
 
