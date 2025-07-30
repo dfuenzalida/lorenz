@@ -2,6 +2,8 @@
 
 A simple [Lorenz attractor](https://en.wikipedia.org/wiki/Lorenz_system) interactive toy written in Janet using the Raylib bindings for Janet.
 
+![lorenz simulation](https://raw.githubusercontent.com/dfuenzalida/lorenz/refs/heads/main/screenshot.png)
+
 ## Building from source
 
 * [Install Janet](https://janet-lang.org/docs/index.html)
